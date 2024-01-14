@@ -1,4 +1,7 @@
-import org.junit.*;
+package fr.a4i.yatzy;
+
+import fr.a4i.yatzy.Yatzy;
+
 import static org.junit.Assert.*;
 
 public class YatzyTest {
