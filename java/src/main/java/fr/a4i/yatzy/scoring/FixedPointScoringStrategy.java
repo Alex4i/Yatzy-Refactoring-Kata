@@ -3,8 +3,6 @@ package fr.a4i.yatzy.scoring;
 import fr.a4i.yatzy.model.DiceCombination;
 import lombok.RequiredArgsConstructor;
 
-import java.util.List;
-
 @RequiredArgsConstructor
 public class FixedPointScoringStrategy implements ScoringStrategy {
 

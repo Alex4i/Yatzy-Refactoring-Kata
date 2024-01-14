@@ -8,18 +8,19 @@ import java.util.List;
 
 public record DiceCombination(List<Integer> dices) {
 
-    public DiceCombination{
+    public DiceCombination {
         DiceValidator.validateDice(dices);
     }
-    public DiceCombination(int... array){
+
+    public DiceCombination(int... array) {
         this(Arrays.stream(array).boxed().toList());
     }
 
-    public static DiceCombination empty(){
+    public static DiceCombination empty() {
         return new DiceCombination(Collections.emptyList());
     }
 
-    public static DiceCombination merge(List<DiceCombination> diceCombinations){
+    public static DiceCombination merge(List<DiceCombination> diceCombinations) {
         return new DiceCombination(
             diceCombinations.stream()
                 .flatMap(diceCombination -> diceCombination.dices().stream())
@@ -27,15 +28,15 @@ public record DiceCombination(List<Integer> dices) {
         );
     }
 
-    public int sum(){
+    public int sum() {
         return dices.stream().mapToInt(i -> i).sum();
     }
 
-    public boolean isFailed(){
+    public boolean isFailed() {
         return dices.isEmpty();
     }
 
-    public boolean isSuccess(){
+    public boolean isSuccess() {
         return !isFailed();
     }
 }

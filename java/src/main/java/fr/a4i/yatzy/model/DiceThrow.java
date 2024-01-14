@@ -12,7 +12,7 @@ public record DiceThrow(List<Integer> values) {
         DiceValidator.validateDice(values);
     }
 
-    public DiceThrow(int... array){
+    public DiceThrow(int... array) {
         this(Arrays.stream(array).boxed().collect(Collectors.toList()));
     }
 }

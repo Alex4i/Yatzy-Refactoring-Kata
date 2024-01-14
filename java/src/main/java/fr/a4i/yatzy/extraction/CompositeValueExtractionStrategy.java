@@ -4,17 +4,19 @@ import fr.a4i.yatzy.model.DiceCombination;
 import fr.a4i.yatzy.model.DiceThrow;
 import lombok.RequiredArgsConstructor;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static fr.a4i.yatzy.model.DiceCombination.empty;
 import static fr.a4i.yatzy.model.DiceCombination.merge;
 
 @RequiredArgsConstructor
-public class CompositeValueExtractionStrategy implements ValueExtractionStrategy{
+public class CompositeValueExtractionStrategy implements ValueExtractionStrategy {
 
     private final List<ValueExtractionStrategy> delegates;
 
-    public CompositeValueExtractionStrategy(ValueExtractionStrategy... delegates){
+    public CompositeValueExtractionStrategy(ValueExtractionStrategy... delegates) {
         this.delegates = Arrays.asList(delegates);
     }
 

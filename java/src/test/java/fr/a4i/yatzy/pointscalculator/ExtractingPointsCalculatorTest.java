@@ -4,7 +4,6 @@ import fr.a4i.yatzy.extraction.ValueExtractionStrategy;
 import fr.a4i.yatzy.model.DiceCombination;
 import fr.a4i.yatzy.model.DiceThrow;
 import fr.a4i.yatzy.scoring.ScoringStrategy;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -27,10 +26,10 @@ class ExtractingPointsCalculatorTest {
     private ExtractingPointsCalculator extractingPointCalculator;
 
     @Test
-    void should_call_scoring_strategy_with_extraction_strategy_output(){
-        DiceThrow diceThrow = new DiceThrow(1,1,2,3);
-        when(valueExtractionStrategy.extract(diceThrow)).thenReturn(new DiceCombination(1,1));
-        when(scoringStrategy.score(new DiceCombination(1,1))).thenReturn(3);
+    void should_call_scoring_strategy_with_extraction_strategy_output() {
+        DiceThrow diceThrow = new DiceThrow(1, 1, 2, 3);
+        when(valueExtractionStrategy.extract(diceThrow)).thenReturn(new DiceCombination(1, 1));
+        when(scoringStrategy.score(new DiceCombination(1, 1))).thenReturn(3);
 
         assertThat(extractingPointCalculator.calculatePoints(diceThrow)).isEqualTo(3);
     }
