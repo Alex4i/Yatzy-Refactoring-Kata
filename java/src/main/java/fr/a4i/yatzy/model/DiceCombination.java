@@ -1,10 +1,16 @@
 package fr.a4i.yatzy.model;
 
+import fr.a4i.yatzy.validator.DiceValidator;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public record DiceCombination(List<Integer> dices) {
+
+    public DiceCombination{
+        DiceValidator.validateDice(dices);
+    }
     public DiceCombination(int... array){
         this(Arrays.stream(array).boxed().toList());
     }
