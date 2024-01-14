@@ -1,9 +1,6 @@
 package fr.a4i.yatzy;
 
-import fr.a4i.yatzy.extraction.AllValueExtractionStrategy;
-import fr.a4i.yatzy.extraction.DuplicateExtractionStrategy;
-import fr.a4i.yatzy.extraction.NumberExtractionStrategy;
-import fr.a4i.yatzy.extraction.SequenceExtractionStrategy;
+import fr.a4i.yatzy.extraction.*;
 import fr.a4i.yatzy.model.DiceThrow;
 import fr.a4i.yatzy.pointscalculator.ExtractingPointsCalculator;
 import fr.a4i.yatzy.pointscalculator.PointsCalculator;
@@ -46,7 +43,13 @@ public class YatzyPoints {
     }
 
     public int twoPairs(DiceThrow diceThrow) {
-        return 0;
+        return new ExtractingPointsCalculator(
+            new CompositeValueExtractionStrategy(
+                new DuplicateExtractionStrategy(2, Comparator.reverseOrder()),
+                new DuplicateExtractionStrategy(2, Comparator.reverseOrder())
+            ),
+            new SumScoringStrategy()
+        ).calculatePoints(diceThrow);
     }
 
     public int threeOfAKind(DiceThrow diceThrow) {
@@ -66,7 +69,13 @@ public class YatzyPoints {
     }
 
     public int fullHouse(DiceThrow diceThrow) {
-        return 0;
+        return new ExtractingPointsCalculator(
+            new CompositeValueExtractionStrategy(
+                new DuplicateExtractionStrategy(3, Comparator.reverseOrder()),
+                new DuplicateExtractionStrategy(2, Comparator.reverseOrder())
+            ),
+            new SumScoringStrategy()
+        ).calculatePoints(diceThrow);
     }
 
     public int yatzy(DiceThrow diceThrow) {
